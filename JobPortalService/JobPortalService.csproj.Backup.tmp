@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="API\Controllers\" />
+    <Folder Include="API\gRPC\" />
+    <Folder Include="API\Middleware\" />
+    <Folder Include="Application\Features\" />
+    <Folder Include="Application\DTOs\" />
+    <Folder Include="Application\Mappings\" />
+    <Folder Include="Application\Services\" />
+    <Folder Include="Core\Domain\Entities\" />
+    <Folder Include="Core\Domain\Enums\" />
+    <Folder Include="Core\Specifications\" />
+    <Folder Include="Core\Domain\ValueObjects\" />
+    <Folder Include="Core\Interfaces\" />
+    <Folder Include="Infrastructure\Data\Context\" />
+    <Folder Include="Infrastructure\Data\Migrations\" />
+    <Folder Include="Infrastructure\Data\Repositories\" />
+    <Folder Include="Infrastructure\Services\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  jobportal-service:
+    build:
+      context: .
+      dockerfile: JobPortalService/Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  marketplace-service:
+    build:
+      context: .
+      dockerfile: FreelanceMarketplaceService/Dockerfile
+    ports:
+      - "5003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  localmarket-service:
+    build:
+      context: .
+      dockerfile: LocalMarketService/Dockerfile
+    ports:
+      - "5004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  apigateway:
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - jobportal-service
+      - marketplace-service
+      - localmarket-service

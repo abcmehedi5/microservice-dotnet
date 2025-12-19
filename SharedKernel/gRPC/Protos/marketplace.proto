@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "SharedKernel.gRPC";
+
+package marketplace;
+
+service MarketplaceGrpc {
+  rpc GetProject (ProjectRequest) returns (ProjectResponse);
+  rpc CreateProject (CreateProjectRequest) returns (ProjectResponse);
+}
+
+message ProjectRequest {
+  string project_id = 1;
+}
+
+message CreateProjectRequest {
+  string title = 1;
+  string description = 2;
+  double budget = 3;
+  string client_id = 4;
+}
+
+message ProjectResponse {
+  string project_id = 1;
+  string title = 2;
+  string description = 3;
+  double budget = 4;
+  string status = 5;
+}

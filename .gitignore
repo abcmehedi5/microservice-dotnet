@@ -1,0 +1,83 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.dbmdl
+*.log
+*.vs/
+.vs/
+TestResults/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+[Dd]ebug/
+[Rr]elease/
+
+# NuGet Packages
+*.nupkg
+packages/
+NuGet.exe
+
+# Visual Studio
+.vscode/
+.vs/
+*.swp
+*~
+*.db
+
+# Entity Framework
+Migrations/
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.override.yml
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project files
+*.pidb
+*.csproj.user
+*.opensdf
+
+# User-specific files
+*.user
+*.suo
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
