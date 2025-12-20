@@ -1,34 +1,24 @@
-using FreelanceMarketplaceService.API.Extensions;
-using FreelanceMarketplaceService.API.gRPC;
-using FreelanceMarketplaceService.Infrastructure.Data.Context;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel for multiple endpoints
-builder.WebHost.ConfigureKestrel(options =>
-{
-    // HTTP endpoint (for REST API)
-    options.ListenLocalhost(5003, listenOptions =>
-    {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
-    });
+// Add services
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-    // gRPC endpoint
-    options.ListenLocalhost(5006, listenOptions =>
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
     {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
 });
 
-// Add services
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddApiServices(builder.Configuration);
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// Configure pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -40,17 +30,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// Map gRPC service
-app.MapGrpcService<MarketplaceGrpcService>();
-
-// Map health checks
-app.MapHealthChecks("/health");
-
-// Apply database migrations
-using (var scope = app.Services.CreateScope())
+// Simple test endpoints
+app.MapGet("/", () => "Freelance Marketplace Service is running!");
+app.MapGet("/health", () => new
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<MarketplaceDbContext>();
-    await dbContext.Database.MigrateAsync();
-}
+    Status = "Healthy",
+    Service = "Freelance Marketplace",
+    Timestamp = DateTime.UtcNow
+});
 
 app.Run();
