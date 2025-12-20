@@ -63,8 +63,8 @@
     <Folder Include="Infrastructure\Data\Context\" />
     <Folder Include="Infrastructure\Data\Migrations\" />
     <Folder Include="Infrastructure\Data\Repositories\" />
-    <Folder Include="Infrastructure\Services\" />
     <Folder Include="Infrastructure\Helpers\" />
+    <Folder Include="Infrastructure\Services\" />
   </ItemGroup>
 
 </Project>
