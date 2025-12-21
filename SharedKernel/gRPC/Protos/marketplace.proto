@@ -7,7 +7,10 @@ package marketplace;
 service MarketplaceGrpc {
   rpc GetProject (ProjectRequest) returns (ProjectResponse);
   rpc CreateProject (CreateProjectRequest) returns (ProjectResponse);
+  rpc GetActiveProjects (EmptyRequest) returns (ProjectListResponse);
 }
+
+message EmptyRequest {}
 
 message ProjectRequest {
   string project_id = 1;
@@ -26,4 +29,11 @@ message ProjectResponse {
   string description = 3;
   double budget = 4;
   string status = 5;
+  string client_id = 6;  // ADD THIS
+  optional string assigned_freelancer_id = 7;
+  optional string created_at = 8;
+}
+
+message ProjectListResponse {
+  repeated ProjectResponse projects = 1;
 }
